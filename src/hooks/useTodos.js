@@ -1,4 +1,4 @@
-import { useMemo, useReducer } from "react";
+import { useEffect, useMemo, useReducer } from "react";
 import { todoReducer } from "../todoReducer";
 
 export const useTodos = () => {
@@ -12,11 +12,10 @@ export const useTodos = () => {
   // Llamado al useReducer.
   const [todos, dispatch] = useReducer(todoReducer, initialState, init);
 
-  // Contador de todos
-  const totalTodos = useMemo(
-    () => todos.reduce((total, todo) => total + 1, 0),
-    [todos]
-  );
+  // Grabando los todos en webStorage cada que cambie el listado de todos.
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   // Contador de todos pendientes.
   const pendingTodos = useMemo(
@@ -38,7 +37,7 @@ export const useTodos = () => {
   };
   return {
     todos,
-    totalTodos,
+    totalTodos: todos.length,
     pendingTodos,
     onNewTodo,
     onRemoveTodo,
