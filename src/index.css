@@ -1,0 +1,7 @@
+.custom-cursor-pointer {
+  cursor: pointer;
+}
+
+.custom-bg-color:hover {
+  background-color: #ffc107;
+}

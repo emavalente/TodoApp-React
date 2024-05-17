@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useReducer } from "react";
+import { useMemo, useReducer } from "react";
 import { todoReducer } from "../todoReducer";
 
-export const useTodo = () => {
+export const useTodos = () => {
   const initialState = [];
 
   // Funcion iniciadora de estado: trae el webStore si hay datos.

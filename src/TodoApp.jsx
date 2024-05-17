@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useTodo } from "./hooks/useTodo";
+import { useTodos } from "./hooks/useTodos";
 import TodoList from "./components/TodoList";
 import TodoForm from "./components/TodoForm";
 
@@ -11,7 +11,7 @@ const TodoApp = () => {
     onNewTodo,
     onRemoveTodo,
     onToggleTodo,
-  } = useTodo();
+  } = useTodos();
   // Grabando los todos en webStorage cada que cambie el listado de todos.
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
